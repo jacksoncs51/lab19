@@ -1,5 +1,31 @@
 module ATM = ATMcomponents ;;
 open Printf ;;
+
+
+type id = int
+
+(* Possible actions that an ATM customer can perform *)
+type action =
+  | Balance           (* balance inquiry *)
+  | Withdraw of int   (* withdraw an amount *)
+  | Deposit of int    (* deposit an amount *)
+  | Next              (* finish this customer and move on to the next one *)
+  | Finished          (* shut down the ATM and exit entirely *)
+;; 
+
+(*....................................................................
+ Initializing database of accounts
+*)
+
+(* A specification of a customer name and initial balance for
+   initializing the account database *)
+type account_spec = {name : string; id : id; balance : int} ;;
+
+(* initialize accts -- Establishes a database of accounts, each with a
+   name, aribtrary id, and balance. The names and balances are
+   initialized as per the `accts` provided. *)
+val initialize : account_spec list -> unit ;;
+
 (* acquire_id () -- Requests from the ATM customer and returns an id
    (akin to entering one's ATM card), by prompting for an id number
    and reading an id from stdin. *)
