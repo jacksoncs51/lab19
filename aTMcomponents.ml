@@ -19,28 +19,46 @@ type action =
 
 (* A specification of a customer name and initial balance for
    initializing the account database *)
-type account_spec = {name : string; id : id; balance : int} ;;
+type account_spec = {name : string; id : id; mutable balance : int} ;;
 
 (* initialize accts -- Establishes a database of accounts, each with a
    name, aribtrary id, and balance. The names and balances are
    initialized as per the `accts` provided. *)
+let database = ref [] ;;
 let initialize (acclst : account_spec list) =
-  let database = ref [] in
     database := acclst
 ;;
 
 (* acquire_id () -- Requests from the ATM customer and returns an id
    (akin to entering one's ATM card), by prompting for an id number
    and reading an id from stdin. *)
-   val acquire_id : unit -> id ;;
+let acquire_id : id =
+  print_string "What's your ID number?";
+  let id = read_int () in
+  id
+;;
 
    (* acquire_amount () -- Requests from the ATM customer and returns an
       amount by prompting for an amount and reading an int from stdin. *)
-   val acquire_amount : unit -> int ;;
+let acquire_amount : int =
+  print_string "Amount?";
+  let amount = read_int () in
+  amount
+;;
 
    (* acquire_act () -- Requests from the user and returns an action to
       be performed, as a value of type action *)
-   val acquire_act : unit -> action ;;
+let acquire_act : action =
+  print_string "What do you want to do? +, -, B, Next, Finished";
+  let act = read_line () in
+    match act with
+    | "+" -> Deposit acquire_amount
+    | "-" -> Withdraw acquire_amount
+    | "B" -> Balance
+    | "Next" -> Next
+    | "Finished" -> Finished
+    | _ -> raise (Failure "Select a correct action")
+;;
 
    (*....................................................................
      Querying and updating the account database
@@ -51,15 +69,21 @@ let initialize (acclst : account_spec list) =
 
    (* get_balance id -- Returns the balance for the customer account with
       the given id. *)
-   val get_balance : id -> int ;;
+let get_balance (id : id) : int =
+  (List.find (fun acct -> acct.id = id) !database).balance
+;;
 
    (* get_name id -- Returns the name associated with the customer
       account with the given id. *)
-   val get_name : id -> string ;;
+let get_name (id : id) : string =
+  (List.find (fun acct -> acct.id = id) !database).name
+  ;;
 
    (* update_balance id amount -- Modifies the balance of the customer
       account with the given id,setting it to the given amount. *)
-   val update_balance : id -> int -> unit ;;
+let update_balance (id : id) (amount : int) =
+  (List.find (fun acct -> acct.id = id) !database).balance <- amount
+  ;;
 
    (*....................................................................
      Presenting information and cash to the customer
