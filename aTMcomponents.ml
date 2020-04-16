@@ -24,7 +24,10 @@ type account_spec = {name : string; id : id; balance : int} ;;
 (* initialize accts -- Establishes a database of accounts, each with a
    name, aribtrary id, and balance. The names and balances are
    initialized as per the `accts` provided. *)
-val initialize : account_spec list -> unit ;;
+let initialize (acclst : account_spec list) =
+  let database = ref [] in
+    database := acclst
+;;
 
 (* acquire_id () -- Requests from the ATM customer and returns an id
    (akin to entering one's ATM card), by prompting for an id number
