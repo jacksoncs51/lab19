@@ -1,16 +1,20 @@
 ### Starting build.
 # Target: lab19.ml.depends, tags: { warn(A-4-33-40-41-42-43-34-44), extension:ml, file:lab19.ml, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules lab19.ml > lab19.ml.depends
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules lab19.ml > lab19.ml.depends # cached
 # Target: aTMcomponents.mli.depends, tags: { warn(A-4-33-40-41-42-43-34-44), extension:mli, file:aTMcomponents.mli, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules aTMcomponents.mli > aTMcomponents.mli.depends
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules aTMcomponents.mli > aTMcomponents.mli.depends # cached
 # Target: aTMcomponents.cmi, tags: { warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:mli, file:aTMcomponents.mli, interf, ocaml, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmi aTMcomponents.mli
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmi aTMcomponents.mli # cached
 # Target: lab19.cmo, tags: { warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:cmo, extension:ml, file:lab19.cmo, file:lab19.ml, implem, ocaml, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o lab19.cmo lab19.ml
-# Target: lab19.byte, tags: { warn(A-4-33-40-41-42-43-34-44), byte, dont_link_with, extension:byte, file:lab19.byte, link, ocaml, program, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt unix.cma str.cma graphics.cma -thread threads.cma lab19.cmo -o lab19.byte
-+ /Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt unix.cma str.cma graphics.cma -thread threads.cma lab19.cmo -o lab19.byte
-File "_none_", line 1:
-Error: Required module `ATMcomponents' is unavailable
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o lab19.cmo lab19.ml # cached
+# Target: aTMcomponents.ml.depends, tags: { warn(A-4-33-40-41-42-43-34-44), extension:ml, file:aTMcomponents.ml, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules aTMcomponents.ml > aTMcomponents.ml.depends
+# Target: aTMcomponents.cmo, tags: { warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:cmo, extension:ml, file:aTMcomponents.cmo, file:aTMcomponents.ml, implem, ocaml, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmo aTMcomponents.ml
++ /Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmo aTMcomponents.ml
+File "aTMcomponents.ml", line 1, characters 13-26:
+1 | module ATM = ATMcomponents ;;
+                 ^^^^^^^^^^^^^
+Error: Unbound module ATMcomponents
 Command exited with code 2.
 # Compilation unsuccessful.

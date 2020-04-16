@@ -1,6 +1,3 @@
-module ATM = ATMcomponents ;;
-open Printf ;;
-
 
 type id = int
 
@@ -91,9 +88,13 @@ let update_balance (id : id) (amount : int) =
 
    (* present_message message -- Presents to the customer (on stdout) the
       given message followed by a newline. *)
-   val present_message : string -> unit ;;
+let present_message (str: string): unit = 
+  print_string str;
+  print_newline();;
 
    (* deliver_cash amount -- Dispenses the given amount of cash to the
       customer (really just prints to stdout a message to that
       effect). *)
-   val deliver_cash : int -> unit ;;
+let deliver_cash (amt: int) : unit =
+  print_string ("Cash dispensed: " ^ string_of_int amt);
+  print_newline();;
