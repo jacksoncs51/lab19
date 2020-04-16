@@ -12,9 +12,20 @@
 # Target: aTMcomponents.cmo, tags: { warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:cmo, extension:ml, file:aTMcomponents.cmo, file:aTMcomponents.ml, implem, ocaml, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
 /Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmo aTMcomponents.ml
 + /Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmo aTMcomponents.ml
-File "aTMcomponents.ml", line 1, characters 13-26:
-1 | module ATM = ATMcomponents ;;
-                 ^^^^^^^^^^^^^
-Error: Unbound module ATMcomponents
+File "aTMcomponents.ml", line 1:
+Error: The implementation aTMcomponents.ml
+       does not match the interface aTMcomponents.cmi:
+       Type declarations do not match:
+         type account_spec = {
+           name : string;
+           id : id;
+           mutable balance : int;
+         }
+       is not included in
+         type account_spec = { name : string; id : id; balance : int; }
+       File "aTMcomponents.mli", line 33, characters 0-59:
+         Expected declaration
+       File "aTMcomponents.ml", line 19, characters 0-67: Actual declaration
+       The mutability of field balance is different.
 Command exited with code 2.
 # Compilation unsuccessful.

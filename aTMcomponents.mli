@@ -30,7 +30,7 @@ type action =
 
 (* A specification of a customer name and initial balance for
    initializing the account database *)
-type account_spec = {name : string; id : id; balance : int} ;;
+type account_spec = {name : string; id : id; mutable balance : int} ;;
 
 (* initialize accts -- Establishes a database of accounts, each with a
    name, aribtrary id, and balance. The names and balances are
