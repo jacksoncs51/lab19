@@ -1,6 +1,9 @@
 
 type id = int
 
+open Printf
+open Scanf
+
 (* Possible actions that an ATM customer can perform *)
 type action =
   | Balance           (* balance inquiry *)
@@ -29,7 +32,7 @@ let initialize (acclst : account_spec list) =
 (* acquire_id () -- Requests from the ATM customer and returns an id
    (akin to entering one's ATM card), by prompting for an id number
    and reading an id from stdin. *)
-let acquire_id : id =
+let acquire_id () : id =
   print_string "What's your ID number?";
   let id = read_int () in
   id
@@ -37,7 +40,7 @@ let acquire_id : id =
 
    (* acquire_amount () -- Requests from the ATM customer and returns an
       amount by prompting for an amount and reading an int from stdin. *)
-let acquire_amount : int =
+let acquire_amount (): int =
   print_string "Amount?";
   let amount = read_int () in
   amount
@@ -45,17 +48,16 @@ let acquire_amount : int =
 
    (* acquire_act () -- Requests from the user and returns an action to
       be performed, as a value of type action *)
-let acquire_act : action =
-  print_string "What do you want to do? +, -, B, Next, Finished";
-  let act = read_line () in
-    match act with
-    | "+" -> Deposit acquire_amount
-    | "-" -> Withdraw acquire_amount
-    | "B" -> Balance
-    | "Next" -> Next
-    | "Finished" -> Finished
-    | _ -> raise (Failure "Select a correct action")
-;;
+let rec acquire_act () : action =  
+  printf "Enter action: (B) Balance (-) Withdraw (+) Deposit (=) Done (X) Exit: %!";  
+  scanf " %c" (fun char -> match char with                     
+                           | 'b' | 'B'        -> Balance                     
+                           | '/' | 'x' | 'X'  -> Finished                     
+                           | '='              -> Next                     
+                           | 'w' | 'W' | '-'  -> Withdraw (acquire_amount ())
+                           | 'd' | 'D' | '+'  -> Deposit (acquire_amount ()) 
+                           | _                -> printf "  invalid choice\n";  
+                                                 acquire_act () ) ;;
 
    (*....................................................................
      Querying and updating the account database

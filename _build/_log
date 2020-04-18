@@ -2,30 +2,25 @@
 # Target: lab19.ml.depends, tags: { warn(A-4-33-40-41-42-43-34-44), extension:ml, file:lab19.ml, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
 /Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules lab19.ml > lab19.ml.depends # cached
 # Target: aTMcomponents.mli.depends, tags: { warn(A-4-33-40-41-42-43-34-44), extension:mli, file:aTMcomponents.mli, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules aTMcomponents.mli > aTMcomponents.mli.depends # cached
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules aTMcomponents.mli > aTMcomponents.mli.depends
 # Target: aTMcomponents.cmi, tags: { warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:mli, file:aTMcomponents.mli, interf, ocaml, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmi aTMcomponents.mli # cached
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmi aTMcomponents.mli
 # Target: lab19.cmo, tags: { warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:cmo, extension:ml, file:lab19.cmo, file:lab19.ml, implem, ocaml, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o lab19.cmo lab19.ml # cached
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o lab19.cmo lab19.ml
 # Target: aTMcomponents.ml.depends, tags: { warn(A-4-33-40-41-42-43-34-44), extension:ml, file:aTMcomponents.ml, ocaml, ocamldep, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
-/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules aTMcomponents.ml > aTMcomponents.ml.depends
+/Users/JacksonSmith/.opam/4.08.1/bin/ocamldep.opt -modules aTMcomponents.ml > aTMcomponents.ml.depends # cached
 # Target: aTMcomponents.cmo, tags: { warn(A-4-33-40-41-42-43-34-44), byte, compile, extension:cmo, extension:ml, file:aTMcomponents.cmo, file:aTMcomponents.ml, implem, ocaml, quiet, strict-sequence, thread, traverse, use_graphics, use_str, use_unix }
 /Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmo aTMcomponents.ml
 + /Users/JacksonSmith/.opam/4.08.1/bin/ocamlc.opt -c -thread -strict-sequence -w A-4-33-40-41-42-43-34-44 -o aTMcomponents.cmo aTMcomponents.ml
 File "aTMcomponents.ml", line 1:
 Error: The implementation aTMcomponents.ml
        does not match the interface aTMcomponents.cmi:
-       Type declarations do not match:
-         type account_spec = {
-           name : string;
-           id : id;
-           mutable balance : int;
-         }
+       Values do not match:
+         val acquire_id : id
        is not included in
-         type account_spec = { name : string; id : id; balance : int; }
-       File "aTMcomponents.mli", line 33, characters 0-59:
+         val acquire_id : unit -> id
+       File "aTMcomponents.mli", line 47, characters 0-27:
          Expected declaration
-       File "aTMcomponents.ml", line 19, characters 0-67: Actual declaration
-       The mutability of field balance is different.
+       File "aTMcomponents.ml", line 32, characters 4-14: Actual declaration
 Command exited with code 2.
 # Compilation unsuccessful.
